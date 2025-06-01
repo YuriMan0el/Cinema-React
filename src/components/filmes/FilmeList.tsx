@@ -5,7 +5,6 @@ import { Filme } from '../../interfaces/filme';
 import { localStorageManager } from '../../lib/localStorageManager';
 import Link from 'next/link';
 import Loader from '../layout/Loader';
-import Button from '../buttons/Button';
 
 export default function FilmeList() {
   const [filmes, setFilmes] = useState<Filme[]>([]);
@@ -30,9 +29,9 @@ export default function FilmeList() {
   }
 
   return (
-    <div className="bg-white">
-      <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8 bg-gray-100">
-        <h1 className="text-center mb-12 text-5xl font-extrabold tracking-tight text-gray-800">
+    <div className="bg-[var(--background)]">
+      <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
+        <h1 className="text-center mb-12 text-4xl font-bold tracking-tight text-[var(--terracota-desvanecido)] sm:text-5xl">
           Filmes Disponíveis
         </h1>
 
@@ -41,14 +40,21 @@ export default function FilmeList() {
             <Link
               key={filme.id}
               href={`/filmes/${filme.id}`}
-              className="group block"
+              className="group block bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 ease-in-out border border-[var(--bege-dourado-claro)]"
             >
-              <img
-                src={filme.imagemUrl || 'https://via.placeholder.com/300x400?text=Sem+Imagem'}
-                alt={`Poster do filme ${filme.titulo}`}
-                className="aspect-square w-full rounded-lg bg-gray-200 object-cover group-hover:opacity-75 xl:aspect-7/8"
-              />
-              <h3 className="mt-4 text-sm text-gray-700 text-center">{filme.titulo}</h3>
+              <div className="aspect-w-1 aspect-h-1 xl:aspect-w-7 xl:aspect-h-8 w-full overflow-hidden rounded-t-lg bg-gray-200">
+                <img
+                  src={filme.imagemUrl || 'https://via.placeholder.com/300x400?text=Sem+Imagem'}
+                  alt={`Poster do filme ${filme.titulo}`}
+                  className="h-full w-full object-cover object-center group-hover:opacity-75"
+                />
+              </div>
+              <div className="p-4">
+                <h3 className="mt-1 text-lg font-semibold text-[var(--terracota-desvanecido)] group-hover:text-[var(--dourado-champanhe)] transition-colors">
+                  {filme.titulo}
+                </h3>
+                <p className="mt-1 text-sm text-[var(--foreground)] opacity-70">{filme.genero}</p>
+              </div>
             </Link>
           ))}
         </div>

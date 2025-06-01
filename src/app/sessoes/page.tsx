@@ -1,12 +1,11 @@
-import SessaoList from "@/components/sessoes/SessaoList";
+import SessaoList from "@/components/sessoes/SessaoList"; 
 
-export default function Sessoes(){
-
+export default function SessoesPage(){
     return (
-        <div>
-            <h1>Sessões</h1>
-            <p>Esta página permite a visualização de sessões.</p>
-            <SessaoList/>
+        <div className="p-8 bg-[var(--background)] min-h-screen">
+            <div className="max-w-7xl mx-auto">
+                <SessaoList/>
+            </div>
         </div>
     )
 }

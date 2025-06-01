@@ -6,24 +6,25 @@ import FilmeForm from "@/components/filmes/FilmeForm";
 import FilmeList from "@/components/filmes/FilmeList";
 import Modal from "@/components/modal/Modal";
 
-export default function Filmes() {
+export default function FilmesPage() { 
     const [mostrarModal, setMostrarModal] = useState(false);
 
     return (
-        <div className="p-4">
-            <h1 className="text-2xl font-bold mb-2">Filmes</h1>
-            <p className="mb-4">Esta página permite a visualização de filmes</p>
-            <Button onClick={() => setMostrarModal(true)}>
-                Novo Filme
-            </Button>
-            <FilmeList />
-
-
-
-            <Modal isOpen={mostrarModal} onClose={() => setMostrarModal(false)}>
-                <h2 className="text-xl font-semibold mb-4">Cadastro de Filme</h2>
-                <FilmeForm />
-            </Modal>
+        <div className="p-8 bg-[var(--background)] min-h-screen">
+            <div className="max-w-7xl mx-auto">
+                <div className="flex justify-between items-center mb-8">
+                    <h1 className="text-4xl font-bold text-[var(--terracota-desvanecido)]">
+                        Gerenciar Filmes
+                    </h1>
+                    <Button onClick={() => setMostrarModal(true)} variant="primary">
+                        Novo Filme
+                    </Button>
+                </div>
+                <FilmeList />
+                <Modal isOpen={mostrarModal} onClose={() => setMostrarModal(false)}>
+                    <FilmeForm />
+                </Modal>
+            </div>
         </div>
     );
 }
